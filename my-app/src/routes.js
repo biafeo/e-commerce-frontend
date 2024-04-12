@@ -1,9 +1,10 @@
 import Cart from "./pages/Cart";
 import Home from "./pages/Home";
-import Clothing from "./pages/Clothing";
+import MenClothing from "./pages/MenClothing";
 import Eletronics from "./pages/Electronics";
 import Jewelery from "./pages/Jewelery";
 import App from "./App";
+import WomenClothing from "./pages/WomenClothing";
 
 const routes = [
   {
@@ -19,8 +20,12 @@ const routes = [
         element: <Home />,
       },
       {
-        path: "/clothing",
-        element: <Clothing />,
+        path: "/menclothing",
+        element: <MenClothing />,
+      },
+      {
+        path: "/womenclothing",
+        element: <WomenClothing />,
       },
       {
         path: "/electronics",
