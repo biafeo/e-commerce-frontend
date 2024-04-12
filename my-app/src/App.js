@@ -1,5 +1,6 @@
 import "./App.css";
 import NavBar from "./components/NavBar";
+import LoginForm from "./components/LoginForm";
 import { Outlet } from "react-router-dom";
 
 function App() {
@@ -8,6 +9,9 @@ function App() {
       <header className="App-header">
         <NavBar />
       </header>
+      <div>
+        <LoginForm />
+      </div>
       <main>
         <Outlet />
       </main>
