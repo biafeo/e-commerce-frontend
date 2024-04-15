@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function ProductCard({ product }) {
+function ProductCard({ product, addToCart }) {
   const { title, price, description, image } = product;
   const [showDescription, setShowDescription] = useState(false);
 
@@ -18,7 +18,9 @@ function ProductCard({ product }) {
         <button className="button-see-more" onClick={toggleDescription}>
           {showDescription ? "See less" : "See more"}
         </button>
-        <button className="button-add-to-cart">Add to Cart</button>
+        <button onClick={addToCart} className="button-add-to-cart">
+          Add to Cart 🛒
+        </button>
       </div>
     </li>
   );

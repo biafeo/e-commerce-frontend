@@ -17,10 +17,19 @@ function Home() {
   }
 
   return (
-    <main>
-      <Search setSubmittedSearch={setSubmittedSearch} />
-      <ProductList products={products} submittedSearch={submittedSearch} />
-    </main>
+    <>
+      <header>
+        <h1>Home</h1>
+      </header>
+      <main>
+        <Search setSubmittedSearch={setSubmittedSearch} />
+        <ProductList
+          products={products}
+          setProducts={setProducts}
+          submittedSearch={submittedSearch}
+        />
+      </main>
+    </>
   );
 }
 
