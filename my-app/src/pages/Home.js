@@ -4,7 +4,7 @@ import Search from "../components/Search";
 
 function Home() {
   const [products, setProducts] = useState([]);
-  const [submittedSearch, setSubmittedSearch] = useState(""); // Move useState here
+  const [submittedSearch, setSubmittedSearch] = useState("");
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")

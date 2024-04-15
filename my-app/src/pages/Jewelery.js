@@ -1,13 +1,22 @@
-import NavBar from "../components/NavBar";
+import React, { useEffect, useState } from "react";
+import ProductList from "../components/ProductList";
+import Search from "../components/Search";
 
 function Jewelery() {
+  const [jewelery, setJewelery] = useState([]);
+  const [submittedSearch, setSubmittedSearch] = useState("");
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products/category/jewelery")
+      .then((response) => response.json())
+      .then((data) => setJewelery(data));
+  }, []);
+
   return (
-    <>
-      <header>
-        <h1>Jewelery</h1>
-      </header>
-      <main></main>
-    </>
+    <main>
+      <Search setSubmittedSearch={setSubmittedSearch} />
+      <ProductList products={jewelery} submittedSearch={submittedSearch} />
+    </main>
   );
 }
 

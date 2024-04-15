@@ -1,13 +1,13 @@
 .navbar > a {
   display: inline-block;
   box-sizing: border-box;
-  width: 70px;
-  padding: 5px;
+  width: 150px;
+  padding: 10px;
   margin: 0 6px 6px;
   background: lightblue;
   text-decoration: none;
   text-align: center;
-  font-size: min(10vw, 12px);
+  font-size: min(12vw, 16px);
   color: black;
 }
 
