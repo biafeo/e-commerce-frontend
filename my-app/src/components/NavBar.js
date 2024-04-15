@@ -7,11 +7,8 @@ function NavBar() {
       <NavLink to="/" className="nav-link">
         Home
       </NavLink>
-      <NavLink to="/womenclothing" className="nav-link">
-        Women Clothing
-      </NavLink>
-      <NavLink to="/menclothing" className="nav-link">
-        Men Clothing
+      <NavLink to="/clothing" className="nav-link">
+        Clothing
       </NavLink>
       <NavLink to="/electronics" className="nav-link">
         Electronics
