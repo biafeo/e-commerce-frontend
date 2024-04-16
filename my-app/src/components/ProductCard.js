@@ -18,7 +18,10 @@ function ProductCard({ product, addToCart }) {
         <button className="button-see-more" onClick={toggleDescription}>
           {showDescription ? "See less" : "See more"}
         </button>
-        <button onClick={addToCart} className="button-add-to-cart">
+        <button
+          onClick={() => addToCart(product)}
+          className="button-add-to-cart"
+        >
           Add to Cart 🛒
         </button>
       </div>

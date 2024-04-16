@@ -1,35 +1,22 @@
-import ProductList from "../components/ProductList";
-import Search from "../components/Search";
-import { useState, useEffect } from "react";
+import CartProductList from "../components/CartProductList";
+import { useState, useEffect, useLayoutEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 
 function Cart() {
-  const [isInCart, setIsInCart] = useState(true);
-  const [products, setProducts] = useState([]);
-  const [submittedSearch, setSubmittedSearch] = useState("");
+  const [products, setProducts, cartProductIds, setCartProductIds] =
+    useOutletContext();
 
-  useEffect(() => {
-    fetch("http://localhost:3000/cart")
-      .then((r) => r.json())
-      .then(setProducts);
-  }, []);
-
-  if (!products.length) {
+  if (!cartProductIds.length) {
     return <p>Loading...</p>;
   }
 
   return (
     <>
       <header>
-        <h1>Cart: {products.length} items</h1>
+        <h1>Cart: {cartProductIds.length} items</h1>
       </header>
       <main>
-        <Search setSubmittedSearch={setSubmittedSearch} />
-        <ProductList
-          products={products}
-          setProducts={setProducts}
-          submittedSearch={submittedSearch}
-          isInCart={isInCart}
-        />
+        <CartProductList />
       </main>
     </>
   );

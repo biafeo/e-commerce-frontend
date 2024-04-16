@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
 import "./NavBar.css";
+import { useState, useEffect } from "react";
 
-function NavBar() {
+function NavBar({ cartCount }) {
   return (
     <nav className="navbar">
       <NavLink to="/" className="nav-link">
@@ -17,7 +18,7 @@ function NavBar() {
         Jewelery
       </NavLink>
       <NavLink to="/cart" className="nav-link">
-        Cart
+        Cart ({cartCount})
       </NavLink>
     </nav>
   );
