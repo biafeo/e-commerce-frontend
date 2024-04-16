@@ -4,6 +4,7 @@ import Clothing from "./pages/Clothing";
 import Eletronics from "./pages/Electronics";
 import Jewelery from "./pages/Jewelery";
 import App from "./App";
+import ProductDetail from "./pages/ProductDetail";
 
 const routes = [
   {
@@ -29,6 +30,10 @@ const routes = [
       {
         path: "/jewelery",
         element: <Jewelery />,
+      },
+      {
+        path: "/product/:id",
+        element: <ProductDetail />,
       },
     ],
   },

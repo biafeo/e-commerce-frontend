@@ -5,28 +5,39 @@ import Search from "../components/Search";
 function Home() {
   const [products, setProducts] = useState([]);
   const [submittedSearch, setSubmittedSearch] = useState("");
-
+  const [sortedHome, setSortedHome] = useState([]);
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((r) => r.json())
-      .then(setProducts);
+      .then((data) => {
+        setProducts(data);
+        setSortedHome(data);
+      });
   }, []);
 
   if (!products.length) {
     return <p>Loading...</p>;
   }
 
+  const sortByPrice = (order) => {
+    const sorted = [...products].sort((a, b) => {
+      if (order === "asc") {
+        return a.price - b.price;
+      } else {
+        return b.price - a.price;
+      }
+    });
+    setSortedHome(sorted);
+  };
+
   return (
     <>
-      <header>
-        <h1>Home</h1>
-      </header>
       <main>
         <Search setSubmittedSearch={setSubmittedSearch} />
         <ProductList
-          products={products}
-          setProducts={setProducts}
+          products={sortedHome}
           submittedSearch={submittedSearch}
+          sortByPrice={sortByPrice}
         />
       </main>
     </>

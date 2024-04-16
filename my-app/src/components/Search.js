@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Search.css";
 
 function Search({ setSubmittedSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -11,7 +12,9 @@ function Search({ setSubmittedSearch }) {
 
   return (
     <div className="searchbar">
-      <label htmlFor="search">Search Products: </label>
+      <label type="search-text" htmlFor="search">
+        Search Products:{" "}
+      </label>
       <input
         type="text"
         id="search"

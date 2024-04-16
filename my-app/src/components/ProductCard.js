@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import SeeMoreCard from "./SeeMoreCard";
+import "./ProductCard.css";
 
 function ProductCard({ product, addToCart }) {
-  const { title, price, description, image } = product;
-  const [showDescription, setShowDescription] = useState(false);
+  const { id, title, price, image } = product;
+  const [showMore, setShowMore] = useState(false);
 
-  const toggleDescription = () => {
-    setShowDescription(!showDescription);
+  const toggleShowMore = () => {
+    setShowMore(!showMore);
   };
 
   return (
@@ -13,7 +16,6 @@ function ProductCard({ product, addToCart }) {
       <h1>{title}</h1>
       <img src={image} alt={title} />
       <h1>Price: ${price}</h1>
-      {showDescription && <p>Description: {description}</p>}
       <div className="button-container">
         <button className="button-see-more" onClick={toggleDescription}>
           {showDescription ? "See less" : "See more"}
