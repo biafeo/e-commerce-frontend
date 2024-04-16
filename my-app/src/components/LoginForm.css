@@ -1,11 +1,25 @@
-form {
+.form-container {
   display: flex;
-  justify-content: center;
-  padding: 0.5rem 1rem;
+  flex-direction: column;
   background-color: lightblue;
 }
 
-input {
-  margin-right: 2rem;
-  flex: 1;
+.label-input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.label-input-container label {
+  margin-right: 1rem;
+}
+
+.logout-container {
+  display: flex;
+  align-items: center;
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
 }
