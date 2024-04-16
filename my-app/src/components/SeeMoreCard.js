@@ -1,5 +1,6 @@
 import React from "react";
 import "./SeeMoreCard.css";
+import { useOutletContext } from "react-router-dom";
 
 function Stars({ rating }) {
   const filledStars = Math.ceil(rating);
@@ -17,8 +18,9 @@ function Stars({ rating }) {
   return <div>{stars}</div>;
 }
 
-function SeeMoreCard({ product, addToCart }) {
+function SeeMoreCard({ product }) {
   const { title, price, description, image, category, rating } = product;
+  const [, , cartProducts, setCartProducts, addToCart] = useOutletContext();
 
   return (
     <li className="see-more-card">
@@ -37,7 +39,10 @@ function SeeMoreCard({ product, addToCart }) {
           </h3>
         </h1>
         <h1>Count: {rating.count}</h1>
-        <button onClick={addToCart} className="button-add-to-cart">
+        <button
+          onClick={() => addToCart(product)}
+          className="button-add-to-cart"
+        >
           Add to Cart 🛒
         </button>
       </div>
