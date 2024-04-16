@@ -160,3 +160,47 @@ code {
     flex: 0 0 calc(20% - 2rem);
   }
 }
+.searchbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightblue;
+}
+
+.searchbar label {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.searchbar input[type="text"] {
+  width: 500px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.searchbar input[type="text"]:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.sort-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.product-list-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.sort-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.sort-container label {
+  margin-right: 10px;
+}

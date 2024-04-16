@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import SeeMoreCard from "./SeeMoreCard";
 
 function ProductCard({ product, addToCart }) {
-  const { id, title, price, description, image } = product;
+  const { id, title, price, image } = product;
   const [showMore, setShowMore] = useState(false);
 
   const toggleShowMore = () => {

@@ -12,7 +12,7 @@ function ProductList({
   const [sortOrder, setSortOrder] = useState("asc");
 
   const handleSortByPrice = () => {
-    sortByPrice(sortOrder); // Call the sortByPrice function passed from props
+    sortByPrice(sortOrder);
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
 
@@ -50,11 +50,13 @@ function ProductList({
 
   return (
     <div>
-      <label htmlFor="sort">Sort By:</label>
-      <select id="sort" onChange={handleSortByPrice} value={sortOrder}>
-        <option value="asc">High to Low</option>
-        <option value="desc">Low to High</option>
-      </select>
+      <div className="sort-container">
+        <label htmlFor="sort">Sort By:</label>
+        <select id="sort" onChange={handleSortByPrice} value={sortOrder}>
+          <option value="asc">High to Low</option>
+          <option value="desc">Low to High</option>
+        </select>
+      </div>
       <ul className="cards">
         {products
           .filter((product) => {

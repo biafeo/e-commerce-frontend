@@ -6,6 +6,7 @@ function Electronics() {
   const [electronics, setElectronics] = useState([]);
   const [submittedSearch, setSubmittedSearch] = useState("");
   const [sortedElectronics, setSortedElectronics] = useState([]);
+  const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products/category/electronics")
@@ -18,13 +19,10 @@ function Electronics() {
 
   const sortByPrice = (order) => {
     const sorted = [...electronics].sort((a, b) => {
-      if (order === "asc") {
-        return a.price - b.price;
-      } else {
-        return b.price - a.price;
-      }
+      return order === "asc" ? a.price - b.price : b.price - a.price;
     });
     setSortedElectronics(sorted);
+    setSortOrder(order);
   };
 
   return (

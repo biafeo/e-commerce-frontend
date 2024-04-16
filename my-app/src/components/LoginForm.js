@@ -47,7 +47,7 @@ function LoginForm() {
         {isLoggedIn && (
           <div className="login-container">
             <p>Welcome, {submittedUsername}!</p>
-            <button type="button" onClick={toggleLogin}>
+            <button className="submit" type="submit" onClick={toggleLogin}>
               Logout
             </button>
           </div>
@@ -56,7 +56,9 @@ function LoginForm() {
       {!isLoggedIn && (
         <div className="logout-container">
           <p>Please Login</p>
-          <button type="submit">Login</button>
+          <button className="submit" type="submit">
+            Login
+          </button>
         </div>
       )}
     </form>
