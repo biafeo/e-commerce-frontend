@@ -23,6 +23,23 @@ function App() {
 
   const cartCount = cartProducts.length;
 
+  const addToCart = (product) => {
+    // create cart-version of product stripped of product ID
+    const newCartProduct = { productId: product.id };
+    const postProductToCart = async () => {
+      const response = await fetch("http://localhost:3000/cart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "Application/JSON",
+        },
+        body: JSON.stringify(newCartProduct),
+      });
+      const postedProduct = await response.json();
+      setCartProducts([...cartProducts, postedProduct]);
+    };
+    postProductToCart();
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -33,7 +50,13 @@ function App() {
       </div>
       <main>
         <Outlet
-          context={[products, setProducts, cartProducts, setCartProducts]}
+          context={[
+            products,
+            setProducts,
+            cartProducts,
+            setCartProducts,
+            addToCart,
+          ]}
         />
       </main>
     </div>

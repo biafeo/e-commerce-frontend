@@ -9,7 +9,7 @@ function ProductList({
   submittedSearch,
   sortByPrice,
 }) {
-  const [, , cartProducts, setCartProducts] = useOutletContext();
+  const [, , cartProducts, setCartProducts, addToCart] = useOutletContext();
   const [sortOrder, setSortOrder] = useState("asc");
 
   const handleSortByPrice = () => {
@@ -17,25 +17,8 @@ function ProductList({
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
 
-  const addToCart = (product) => {
-    // create cart-version of product stripped of product ID
-    const newCartProduct = { productId: product.id };
-    const postProductToCart = async () => {
-      const response = await fetch("http://localhost:3000/cart", {
-        method: "POST",
-        headers: {
-          "Content-Type": "Application/JSON",
-        },
-        body: JSON.stringify(newCartProduct),
-      });
-      const postedProduct = await response.json();
-      setCartProducts([...cartProducts, postedProduct]);
-    };
-    postProductToCart();
-  };
-
   return (
- <div>
+    <div>
       <div className="sort-container">
         <label htmlFor="sort">Sort By:</label>
         <select id="sort" onChange={handleSortByPrice} value={sortOrder}>
@@ -43,24 +26,26 @@ function ProductList({
           <option value="desc">Low to High</option>
         </select>
       </div>
-    <ul className="cards">
-      {products
-        .filter((product) => {
-          return (
-            product.title &&
-            product.title.toLowerCase().includes(submittedSearch.toLowerCase())
-          );
-        })
-        .map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            id={product.id}
-            addToCart={addToCart}
-          />
-        ))}
-    </ul>
-</div>
+      <ul className="cards">
+        {products
+          .filter((product) => {
+            return (
+              product.title &&
+              product.title
+                .toLowerCase()
+                .includes(submittedSearch.toLowerCase())
+            );
+          })
+          .map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              id={product.id}
+              addToCart={addToCart}
+            />
+          ))}
+      </ul>
+    </div>
   );
 }
 
