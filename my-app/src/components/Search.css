@@ -1,0 +1,22 @@
+.searchbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchbar label {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.searchbar input[type="text"] {
+  width: 500px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.searchbar input[type="text"]:focus {
+  outline: none;
+  border-color: #007bff;
+}

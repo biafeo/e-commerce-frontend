@@ -1,4 +1,5 @@
 import React from "react";
+import "./SeeMoreCard.css";
 
 function Stars({ rating }) {
   const filledStars = Math.ceil(rating);
@@ -21,21 +22,25 @@ function SeeMoreCard({ product, addToCart }) {
 
   return (
     <li className="see-more-card">
-      <h1>{title}</h1>
-      <img src={image} alt={title} />
-      <h1>Price: ${price}</h1>
-      <h1>Category: {category}</h1>
-      <h1>Description: {description}</h1>
-      <h1>
-        Rating:{" "}
-        <p>
-          <Stars rating={rating.rate} />
-        </p>
-      </h1>
-      <h1>Count: {rating.count}</h1>
-      <button onClick={addToCart} className="button-add-to-cart">
-        Add to Cart 🛒
-      </button>
+      <div className="left-content">
+        <h2>{title}</h2>
+        <img src={image} alt={title} />
+      </div>
+      <div className="right-content">
+        <h2>Price: ${price}</h2>
+        <h1>Category: {category}</h1>
+        <h1>Description: {description}</h1>
+        <h1>
+          Rating:
+          <h3>
+            <Stars rating={rating.rate} />
+          </h3>
+        </h1>
+        <h1>Count: {rating.count}</h1>
+        <button onClick={addToCart} className="button-add-to-cart">
+          Add to Cart 🛒
+        </button>
+      </div>
     </li>
   );
 }
