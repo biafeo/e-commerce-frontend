@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function CartProductCard({ product, removeFromCart }) {
+function CartProductCard({ product, removeFromCart, id }) {
   const { title, price, description, image } = product;
 
   return (
@@ -9,7 +9,10 @@ function CartProductCard({ product, removeFromCart }) {
       <img src={image} alt={title} />
       <h1>Price: ${price}</h1>
       <div className="button-container">
-        <button onClick={removeFromCart} className="button-remove-from-cart">
+        <button
+          onClick={() => removeFromCart(id)}
+          className="button-remove-from-cart"
+        >
           Remove from Cart 🛒
         </button>
       </div>

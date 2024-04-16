@@ -17,18 +17,13 @@ function ProductCard({ product, addToCart }) {
       <img src={image} alt={title} />
       <h1>Price: ${price}</h1>
       <div className="button-container">
-        {showMore ? (
-          <SeeMoreCard product={product} removeFromCart={toggleShowMore} />
-        ) : (
-          <Link
-            to={`/product/${id}`}
-            className="button-see-more"
-            onClick={toggleShowMore}
-          >
-            See more
-          </Link>
-        )}
-        <button onClick={addToCart} className="button-add-to-cart">
+        <button className="button-see-more" onClick={toggleDescription}>
+          {showDescription ? "See less" : "See more"}
+        </button>
+        <button
+          onClick={() => addToCart(product)}
+          className="button-add-to-cart"
+        >
           Add to Cart 🛒
         </button>
       </div>

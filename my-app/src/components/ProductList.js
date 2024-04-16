@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ProductCard from "./ProductCard";
-import CartProductCard from "./CartProductCard";
+import { useOutletContext } from "react-router-dom";
 
 function ProductList({
   isInCart,
@@ -9,6 +9,7 @@ function ProductList({
   submittedSearch,
   sortByPrice,
 }) {
+  const [, , cartProducts, setCartProducts] = useOutletContext();
   const [sortOrder, setSortOrder] = useState("asc");
 
   const handleSortByPrice = () => {
@@ -18,38 +19,23 @@ function ProductList({
 
   const addToCart = (product) => {
     // create cart-version of product stripped of product ID
-    const cartProduct = { ...product, id: "" };
+    const newCartProduct = { productId: product.id };
     const postProductToCart = async () => {
       const response = await fetch("http://localhost:3000/cart", {
         method: "POST",
         headers: {
           "Content-Type": "Application/JSON",
         },
-        body: JSON.stringify(cartProduct),
+        body: JSON.stringify(newCartProduct),
       });
       const postedProduct = await response.json();
+      setCartProducts([...cartProducts, postedProduct]);
     };
     postProductToCart();
   };
 
-  const removeFromCart = (id) => {
-    fetch(`http://localhost:3000/cart/${id}`, {
-      method: "DELETE",
-    })
-      .then((response) => {
-        if (response.ok) {
-          setProducts(
-            products.filter((product) => {
-              return product.id !== id;
-            })
-          );
-        }
-      })
-      .catch((error) => console.error(error));
-  };
-
   return (
-    <div>
+ <div>
       <div className="sort-container">
         <label htmlFor="sort">Sort By:</label>
         <select id="sort" onChange={handleSortByPrice} value={sortOrder}>
@@ -57,34 +43,24 @@ function ProductList({
           <option value="desc">Low to High</option>
         </select>
       </div>
-      <ul className="cards">
-        {products
-          .filter((product) => {
-            return (
-              product.title &&
-              product.title
-                .toLowerCase()
-                .includes(submittedSearch.toLowerCase())
-            );
-          })
-          .map((product) =>
-            isInCart ? (
-              <CartProductCard
-                key={product.id}
-                product={product}
-                removeFromCart={() => removeFromCart(product.id)}
-              />
-            ) : (
-              <ProductCard
-                key={product.id}
-                product={product}
-                id={product.id}
-                addToCart={() => addToCart(product)}
-              />
-            )
-          )}
-      </ul>
-    </div>
+    <ul className="cards">
+      {products
+        .filter((product) => {
+          return (
+            product.title &&
+            product.title.toLowerCase().includes(submittedSearch.toLowerCase())
+          );
+        })
+        .map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            id={product.id}
+            addToCart={addToCart}
+          />
+        ))}
+    </ul>
+</div>
   );
 }
 
