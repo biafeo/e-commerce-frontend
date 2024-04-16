@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SeeMoreCard from "./SeeMoreCard";
-import "./ProductCard.css";
 
 function ProductCard({ product, addToCart }) {
   const { id, title, price, image } = product;
