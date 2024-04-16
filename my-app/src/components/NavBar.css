@@ -1,6 +1,7 @@
 .navbar > a {
   display: inline-block;
   box-sizing: border-box;
+  border-radius: 10px;
   width: 150px;
   padding: 10px;
   margin: 0 6px 6px;

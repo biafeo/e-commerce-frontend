@@ -8,21 +8,21 @@ function LoginForm() {
   const [submittedUsername, setSubmittedUsername] = useState("");
 
   function toggleLogin() {
+    console.log("toggling");
     setIsLoggedIn(!isLoggedIn);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
     setSubmittedUsername(username);
-    setUsername("");
+    setUsername("Guest");
     setPassword("");
-    setIsLoggedIn(true);
   }
 
   return (
     <form onSubmit={handleSubmit} className="form-container">
       <div className="label-input-container">
-        <label>
+        {/* <label>
           Username:
           <input
             type="text"
@@ -43,24 +43,23 @@ function LoginForm() {
               setPassword(event.target.value);
             }}
           />
-        </label>
-        {isLoggedIn && (
+        </label> */}
+        {isLoggedIn ? (
           <div className="login-container">
             <p>Welcome, {submittedUsername}!</p>
             <button className="submit" type="submit" onClick={toggleLogin}>
               Logout
             </button>
           </div>
+        ) : (
+          <div className="login-container">
+            <p>Please Login</p>
+            <button onClick={toggleLogin} className="submit" type="submit">
+              Login
+            </button>
+          </div>
         )}
       </div>
-      {!isLoggedIn && (
-        <div className="logout-container">
-          <p>Please Login</p>
-          <button className="submit" type="submit">
-            Login
-          </button>
-        </div>
-      )}
     </form>
   );
 }

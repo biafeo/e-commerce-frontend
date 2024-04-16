@@ -5,17 +5,18 @@ import { useOutletContext } from "react-router-dom";
 function CartProductList() {
   const [products, setProducts, cartProducts, setCartProducts] =
     useOutletContext();
-  const [totalPrice, setTotalPrice] = useState(0);
+
+  const totalPrice =
+    products.length > 0
+      ? cartProducts.reduce((total, cartProduct) => {
+          const product = products.find((p) => cartProduct.productId === p.id);
+          console.log("product price: ", product.price);
+          return total + product.price;
+        }, 0)
+      : 0;
 
   // Calculate total price whenever cartProducts change
-  useEffect(() => {
-    const newTotalPrice = cartProducts.reduce((total, cartProduct) => {
-      const product = products.find((p) => cartProduct.productId === p.id);
-      return total + product.price;
-    }, 0);
-    setTotalPrice(newTotalPrice);
-    console.log(newTotalPrice);
-  }, [cartProducts, products]);
+
   const removeFromCart = (removeId) => {
     fetch(`http://localhost:3000/cart/${removeId}`, {
       method: "DELETE",
@@ -27,6 +28,10 @@ function CartProductList() {
       })
       .catch((error) => console.error(error));
   };
+
+  if (!products) {
+    return <>Loading...</>;
+  }
 
   return (
     <div>
