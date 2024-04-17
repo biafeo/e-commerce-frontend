@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SeeMoreCard from "./SeeMoreCard";
 import "./ProductCard.css";
+
 function ProductCard({ product, addToCart }) {
   const { id, title, price, image } = product;
   const [showMore, setShowMore] = useState(false);
   const toggleShowMore = () => {
     setShowMore(!showMore);
   };
+
   return (
     <li className="card">
       <h1>{title}</h1>

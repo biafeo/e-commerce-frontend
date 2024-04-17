@@ -9,7 +9,7 @@ function ProductList({
   submittedSearch,
   sortByPrice,
 }) {
-  const [, , cartProducts, setCartProducts, addToCart] = useOutletContext();
+  const [, , , , addToCart] = useOutletContext();
   const [sortOrder, setSortOrder] = useState("asc");
 
   const handleSortByPrice = () => {

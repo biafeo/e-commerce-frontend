@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 function CartProductCard({ product, removeFromCart, id }) {
   const { title, price, description, image } = product;
 
