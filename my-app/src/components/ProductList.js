@@ -20,7 +20,7 @@ function ProductList({
   return (
     <div>
       <div className="sort-container">
-        <label htmlFor="sort">Sort By:</label>
+        <label htmlFor="sort">Sort By Price:</label>
         <select id="sort" onChange={handleSortByPrice} value={sortOrder}>
           <option value="asc">High to Low</option>
           <option value="desc">Low to High</option>
