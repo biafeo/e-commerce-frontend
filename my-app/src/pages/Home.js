@@ -6,6 +6,7 @@ function Home() {
   const [products, setProducts] = useState([]);
   const [submittedSearch, setSubmittedSearch] = useState("");
   const [sortedHome, setSortedHome] = useState([]);
+
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((r) => r.json())
