@@ -13,14 +13,14 @@ function LoginForm() {
     <>
       {isLoggedIn ? (
         <div className="login-container">
-          <p>Welcome!</p>
+          <p>Welcome! </p>
           <button className="submit" type="submit" onClick={toggleLogin}>
             Logout
           </button>
         </div>
       ) : (
         <div className="logout-container">
-          <p>Please Login</p>
+          <p>Please Login </p>
           <button onClick={toggleLogin} className="submit" type="submit">
             Login
           </button>

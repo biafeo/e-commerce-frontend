@@ -4,6 +4,10 @@ import LoginForm from "./components/LoginForm";
 import { Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 
+//change tab name
+
+document.title = "e-commerce";
+
 function App() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
