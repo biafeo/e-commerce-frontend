@@ -45,7 +45,7 @@ function App() {
       <header className="App-header">
         <NavBar cartCount={cartCount} />
       </header>
-      <div>
+      <div className="LoginForm">
         <LoginForm />
       </div>
       <main>

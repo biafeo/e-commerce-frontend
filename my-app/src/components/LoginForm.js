@@ -19,7 +19,7 @@ function LoginForm() {
           </button>
         </div>
       ) : (
-        <div className="login-container">
+        <div className="logout-container">
           <p>Please Login</p>
           <button onClick={toggleLogin} className="submit" type="submit">
             Login
