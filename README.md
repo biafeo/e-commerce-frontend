@@ -24,7 +24,7 @@ _User Authentication:_ Each page contains a toggle button where users can mock "
 
 ## Demo
 
-...include gif here...
+![Demo GIF]([link](https://github.com/biafeo/e-commerce-frontend/blob/main/my-app/images/E-commerc_GIF.gif)) 
 
 ## Instructions
 
