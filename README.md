@@ -24,7 +24,7 @@ _User Authentication:_ Each page contains a toggle button where users can mock "
 
 ## Demo
 
-![Demo GIF]([link](/my-app/images/E-commerc_GIF.gif)) 
+![Demo GIF]([link](./my-app/images/E-commerc_GIF.gif)) 
 
 ## Instructions
 
